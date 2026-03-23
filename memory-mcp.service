@@ -1,0 +1,16 @@
+[Unit]
+Description=Cloud Memory MCP Server
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/memory_mcp
+ExecStart=/usr/bin/python3 /home/ubuntu/memory_mcp/server.py
+Restart=always
+RestartSec=5
+Environment=PORT=9800
+Environment=MEMORY_DB_PATH=/home/ubuntu/memory_mcp/memories.db
+
+[Install]
+WantedBy=multi-user.target
